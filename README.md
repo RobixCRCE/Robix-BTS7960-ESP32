@@ -1,1 +1,2 @@
 # Robix-BTS7960-ESP32
+You will have to download arduino ide to run these files/upload it to your esp32 and install the required esp32 drivers (if your device doesnt automatically install them) Install CP210x VCP Drivers via https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers Install CH340 Drivers via https://sparks.gogo.co.nz/ch340.html Install FTDI Drivers via https://ftdichip.com/drivers/
