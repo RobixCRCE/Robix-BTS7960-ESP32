@@ -1,13 +1,13 @@
 #include "BluetoothSerial.h"
 BluetoothSerial SerialBT;
 
-// ===== LEFT BTS7960 #1 =====
+// LEFT BTS
 #define L_EN_L 25  // L_EN
 #define L_EN_R 26  // R_EN  
 #define L_PWM  27  // LPWM - Forward
 #define R_PWM  14  // RPWM - Backward
 
-// ===== RIGHT BTS7960 #2 =====
+// RIGHT BTS
 #define L2_EN_L 33 // L_EN
 #define L2_EN_R 32 // R_EN
 #define L2_PWM 4   // LPWM - Forward  
@@ -16,11 +16,11 @@ BluetoothSerial SerialBT;
 #define PWM_FREQ 5000
 #define PWM_RESOLUTION 8
 
-int speedVal = 180;
+int speedVal = 180; //CAN SET IT TO 255 BUT OUR BOT WAS VERY FAST
 
 void setup() {
   Serial.begin(115200);
-  SerialBT.begin("BLACK BEETLE");
+  SerialBT.begin("RobixBTS7960Bot");
   
   // Setup enable pins (digital HIGH = always enabled)
   pinMode(L_EN_L, OUTPUT); digitalWrite(L_EN_L, HIGH);
@@ -36,7 +36,7 @@ void setup() {
   
   stopAll();
   
-  Serial.println("🚗 Dual BTS7960 RC Bot - ESP32 3.0+ API!");
+  Serial.println("ROBIX BOT!");
   Serial.print("Speed: "); Serial.println(speedVal);
   Serial.println("F/B/L/R/S/+/-");
 }
@@ -54,31 +54,31 @@ void setRight(int forwardPWM, int backwardPWM) {
 
 // Movements
 void forward(int spd) {
-  Serial.println("➡️ FORWARD");
+  Serial.println("FORWARD");
   setLeft(spd, 0);
   setRight(spd, 0);
 }
 
 void backward(int spd) {
-  Serial.println("⬅️ BACKWARD");
+  Serial.println("BACKWARD");
   setLeft(0, spd);
   setRight(0, spd);
 }
 
 void turnLeft(int spd) {
-  Serial.println("↰️ LEFT");
+  Serial.println("LEFT");
   setLeft(0, spd);
   setRight(spd, 0);
 }
 
 void turnRight(int spd) {
-  Serial.println("↱️ RIGHT");
+  Serial.println("RIGHT");
   setLeft(spd, 0);
   setRight(0, spd);
 }
 
 void stopAll() {
-  Serial.println("⏹️ STOP");
+  Serial.println("STOP");
   setLeft(0, 0);
   setRight(0, 0);
 }
@@ -106,3 +106,5 @@ void loop() {
     }
   }
 }
+
+//made by robix but open to all
